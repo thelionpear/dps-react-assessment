@@ -13,15 +13,8 @@ class Beers extends React.Component {
     render() {
         const beers = this.state;
             return (
-                <ul>
-                    { beers.map( beer =>
-                        <li key={beer.id}>
-                            { beer.name }
-                            { beer.description }
-                            
-                        </li>
-                    )}
-                </ul>
+                <div></div> 
+             
             )
     }
 

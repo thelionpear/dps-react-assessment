@@ -6,27 +6,31 @@ import Home from './Home';
 import Beers from './Beers'; 
 import { Switch, Route } from 'react-router-dom';
 import { Segment } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
+import axios from 'axios';
+
 
 class App extends Component {
+  state = { beers: [] }
+
+  componentDidMount() {
+      axios.get('/api/all_beers')
+          .then( res => this.setState({ beers: res.data }) )
+          debugger  
+  }
+
   render() {
     return (
-      <Segment style={styles.background}>
-        <NavBar />
-        <Flash />
-        <Switch>
-          <Route exact path='/beers' component={Beers}/>
-          <Route exact path='/' component={Home} />
-          <Route component={NoMatch} />
-        </Switch>
-      </Segment>
+      <Grid>
+        <Grid.Row>
+          <Grid.Column mobile={16} tablet={16} computer={4} >
+          </Grid.Column>
+          <Grid.Column mobile={16} tablet={16} computer={10}>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     );
   }
-}
-
-const styles = {
-  background: {
-    backgroundColor: 'black',
-  },
 }
 
 export default App;
